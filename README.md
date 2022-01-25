@@ -31,4 +31,4 @@ npx commitmsg-with-jira-ticket install --host=http://www.jira.com
 
 ### with husky
 
-// todo
+wait to write
