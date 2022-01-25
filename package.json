@@ -1,16 +1,16 @@
 {
   "name": "commitmsg-with-jira-ticket",
-  "version": "0.0.1",
+  "version": "0.0.1-canary.1",
   "main": "index.js",
   "author": "anc95",
   "license": "MIT",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc build",
-    "prepublish": "tcs build"
+    "build": "tsc",
+    "prepublish": "tsc"
   },
   "bin": {
-    "add-jira-ticket": "./bin/add-jira-ticket"
+    "add-jira-ticket": "./bin/add-jira-ticket.js"
   },
   "dependencies": {
     "axios": "^0.25.0",
