@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "chrome-cookie-finder": "^1.0.6",
+    "commander": "^8.3.0",
     "inquirer": "^8.2.0",
     "inquirer-autocomplete-prompt": "^1.4.0"
   },
