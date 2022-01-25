@@ -23,7 +23,7 @@ Commands:
 
 ### use cli
 
-Firstly, install script to git prepare-commitmsg hook
+Firstly, install script to `git prepare-commitmsg hook`
 
 ```bash
 npx commitmsg-with-jira-ticket install --host=http://www.jira.com
