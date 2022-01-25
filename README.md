@@ -6,7 +6,7 @@ Add Jira ticket in interactive way to your commit msg
 npm i -g commitmsg-with-jira-ticket
 ```
 
-## Ussage
+## Usage
 
 ```sh
 Usage: add-jira-ticket [options] [command]
@@ -20,3 +20,15 @@ Commands:
   install [options]
   help [command]                    display help for command
 ```
+
+### use cli
+
+Firstly, install script to git prepare-commitmsg hook
+
+```bash
+npx commitmsg-with-jira-ticket install --host=http://www.jira.com
+```
+
+### with husky
+
+// todo
