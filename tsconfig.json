@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES3",
+        "module": "CommonJS",
+        "outDir": "dist",
+        "esModuleInterop": true
+    },
+    "include": ["src"]
+}
