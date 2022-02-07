@@ -23,7 +23,7 @@ const install = (host) => {
         fs.writeFileSync(prepareCommitMsgFile, '');
     }
 
-    const scriptToAppend = `\nexec < /dev/tty && npx commitmsg-with-jira-ticket commit $1 --host=${host}`
+    const scriptToAppend = `\nexec < /dev/tty && npx commitmsg-with-jira-ticket commit $1 --host=${host} || exit 0`
 
     let commitMsgFileContent = fs.readFileSync(prepareCommitMsgFile, 'utf-8');
     commitMsgFileContent = commitMsgFileContent.replace(/.*commitmsg-with-jira-ticket.*/g, '')
