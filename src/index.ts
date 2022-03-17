@@ -12,7 +12,7 @@ export const getIssueTicket = async (host: string) => {
         source: async function(answersSoFar, input) {
             const issues = await fetchIssues(input, host);
     
-            return issues.map(item => `[${item.key}] ${item.summaryText}`)
+            return ['<skip prepend jira ticket>', ...issues.map(item => `[${item.key}] ${item.summaryText}`)]
         }
     }])
 

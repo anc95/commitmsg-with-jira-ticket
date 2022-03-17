@@ -6,6 +6,11 @@ const { getIssueTicket }  = require('../dist/index');
 
 const prependTicket = async (commitmsgFile, host) => {
     const ticket = await getIssueTicket(host);
+
+    if (ticket === '<skip prepend jira ticket>') {
+        return
+    }
+
     const content = fs.readFileSync(commitmsgFile);
     fs.writeFileSync(commitmsgFile, `${ticket} ${content}`)
 }
@@ -17,18 +22,18 @@ const install = (host) => {
         throw new Error('You should run `add-jira-ticket install` in a project\'s root with git')
     }
 
-    const prepareCommitMsgFile = path.join(gitDir, 'hooks/prepare-commit-msg')
+    const commitMsgFile = path.join(gitDir, 'hooks/commit-msg')
 
-    if (!fs.existsSync(prepareCommitMsgFile)) {
-        fs.writeFileSync(prepareCommitMsgFile, '');
+    if (!fs.existsSync(commitMsgFile)) {
+        fs.writeFileSync(commitMsgFile, '');
     }
 
-    const scriptToAppend = `\nexec < /dev/tty && npx commitmsg-with-jira-ticket commit $1 --host=${host} || exit 0`
+    const scriptToAppend = `\nexec < /dev/tty && npx -y commitmsg-with-jira-ticket commit $1 --host=${host} || exit 0`
 
-    let commitMsgFileContent = fs.readFileSync(prepareCommitMsgFile, 'utf-8');
+    let commitMsgFileContent = fs.readFileSync(commitMsgFile, 'utf-8');
     commitMsgFileContent = commitMsgFileContent.replace(/.*commitmsg-with-jira-ticket.*/g, '')
 
-    fs.writeFileSync(prepareCommitMsgFile, commitMsgFileContent + scriptToAppend);
+    fs.writeFileSync(commitMsgFile, commitMsgFileContent + scriptToAppend);
     console.info('Successfully installed!')
 }
 
